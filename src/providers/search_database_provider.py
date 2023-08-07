@@ -7,5 +7,5 @@ class SearchDatabaseProvider(Provider):
     Provides the search database
     """
     @staticmethod
-    def provide():
+    def provide() -> SearchDatabase:
         return SearchDatabase().from_txt_file("../data/word_list.txt")

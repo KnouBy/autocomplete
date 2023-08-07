@@ -5,7 +5,7 @@ from exceptions.api_validation_exception import APIValidationException
 
 class SanitizeService:
     @staticmethod
-    def sanitize_path(url_path):
+    def sanitize_path(url_path: str) -> dict:
         """
         Sanitize the path of a request arriving to the server
         """
@@ -28,7 +28,7 @@ class SanitizeService:
         return parsed_url
 
     @staticmethod
-    def sanitize_query(query):
+    def sanitize_query(query: str) -> str:
         """
         Sanitize the query sent to the server (allowing only alpha chars)
         """

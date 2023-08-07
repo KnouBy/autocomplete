@@ -5,12 +5,13 @@ from models.search_node import SearchNode
 
 
 class SearchDatabase:
-    """
-    The search database is made of search nodes to accelerate the search time
-    """
+    __root_node: SearchNode
 
     def __init__(self):
-        self.root = SearchNode()
+        """
+        The search database is made of search nodes to accelerate the search time
+        """
+        self.__root_node = SearchNode()
 
     def index_word_list(self, word_list: list[str]) -> None:
         """
@@ -24,7 +25,7 @@ class SearchDatabase:
         """
         Index one word in the database
         """
-        node = self.root
+        node = self.__root_node
         for letter in search_key:
             if not node.children.get(letter):
                 node.children[letter] = SearchNode()
@@ -36,18 +37,18 @@ class SearchDatabase:
         Search a word in the database
         """
         search_key = SearchDatabase.sanitize_search_key(word)
-        node = self.root
+        node = self.__root_node
         for letter in search_key:
             if not node.children.get(letter):
                 return []
             node = node.children.get(letter)
-        return node.words
+        return node.get_words()
 
     def to_dict(self) -> dict:
         """
         Export the database into a dictionary
         """
-        return SearchDatabase.node_to_dict(self.root, {})
+        return SearchDatabase.node_to_dict(self.__root_node, {})
 
     def to_file(self, file_path: str) -> None:
         """
@@ -74,12 +75,13 @@ class SearchDatabase:
         for letter in node.children:
             node_dict[letter] = SearchDatabase.node_to_dict(
                 node.children.get(letter), {})
-        node_dict["words"] = node.words
+        node_dict["words"] = node.get_words()
         return node_dict
 
     @staticmethod
     def sanitize_search_key(word: str) -> str:
         """
-        Sanitize the search key. It is used before indexing a word in the database or before searching a word into the database
+        Sanitize the search key. It is used before indexing a 
+        word in the database or before searching a word into the database
         """
         return re.sub(r'(\W|\d)+', '_', word).lower()

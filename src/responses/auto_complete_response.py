@@ -11,7 +11,7 @@ class AutoCompleteResponse:
                 "Response of autocomplete should have been a list.")
         self.data = data
 
-    def to_bytes(self):
+    def to_bytes(self) -> bytes:
         """
         Transforms the response into bytes
         """

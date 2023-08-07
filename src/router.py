@@ -4,7 +4,7 @@ from middlewares.auto_complete_verificator import AutoCompleteVerificator
 
 
 class Router:
-    _routes = {
+    __routes = {
         "/autocomplete": {
             "controller": AutoCompleteController,
             "middlewares": [AutoCompleteVerificator],
@@ -13,17 +13,17 @@ class Router:
     }
 
     @staticmethod
-    def get_controller(routeKey):
-        return Router._routes.get(routeKey).get("controller")
+    def get_controller(route_key):
+        return Router.__routes.get(route_key).get("controller")
 
     @staticmethod
-    def get_middlewares(routeKey):
-        return Router._routes.get(routeKey).get("middlewares")
+    def get_middlewares(route_key):
+        return Router.__routes.get(route_key).get("middlewares")
 
     @staticmethod
-    def get_reponse_handler(routeKey):
-        return Router._routes.get(routeKey).get("response")
+    def get_reponse_handler(route_key):
+        return Router.__routes.get(route_key).get("response")
 
     @staticmethod
     def get_route_list():
-        return Router._routes.keys()
+        return Router.__routes.keys()
