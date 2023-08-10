@@ -1,12 +1,18 @@
-from http.server import HTTPServer
-from request_handler import RequestHandler
+import os
+import logging
+logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.DEBUG)
 
-HOSTNAME = 'localhost'
-PORT = 8080
+from http.server import HTTPServer
+from services.request_handler import RequestHandler
+
+HOSTNAME = os.environ.get("HOSTNAME") \
+    if os.environ.get("HOSTNAME") is not None else 'localhost'
+PORT = int(os.environ.get("PORT")) \
+    if os.environ.get("PORT") is not None else 8080
 
 if __name__ == "__main__":
     webServer = HTTPServer((HOSTNAME, PORT), RequestHandler)
-    print(f'Server started http://{HOSTNAME}:{PORT}')
+    logging.debug("Server started http://%s:%s", HOSTNAME, PORT)
 
     try:
         webServer.serve_forever()
@@ -14,4 +20,4 @@ if __name__ == "__main__":
         pass
 
     webServer.server_close()
-    print("Server stopped.")
+    logging.debug("Server stopped.")

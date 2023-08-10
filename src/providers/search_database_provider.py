@@ -1,3 +1,4 @@
+import logging
 from models.search_database import SearchDatabase
 from providers.provider import Provider
 
@@ -8,4 +9,7 @@ class SearchDatabaseProvider(Provider):
     """
     @staticmethod
     def provide() -> SearchDatabase:
-        return SearchDatabase().from_txt_file("../data/word_list.txt")
+        logging.info("Loading database...")
+        search_database = SearchDatabase().from_txt_file("../data/word_list.txt")
+        logging.info("Database loaded !")
+        return search_database
