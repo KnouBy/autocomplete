@@ -5,11 +5,8 @@ from responses.auto_complete_response import AutoCompleteResponse
 
 
 class AutoCompleteController:
-    """
-    Controller for the autocomplete service
-    """
     @staticmethod
-    @inject(SearchDatabaseProvider)  # Injects the SearchDatabase
+    @inject(SearchDatabaseProvider)  # Injects the SearchDatabase service
     def get(search_db: SearchDatabase, request, params: dict):
         query = params.get("query")
         matched = search_db.search(query)

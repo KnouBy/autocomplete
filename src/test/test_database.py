@@ -38,11 +38,6 @@ def test_db_from_txt():
         "computer security incident"
     ]
 
-"""
-def test_db_to_json():
-    db = SearchDatabase().from_txt_file("../data/word_list.txt")
-    db.to_file("../data/db.json")
-"""
 
 def test_index_large_db():
     db = SearchDatabase().from_txt_file("../data/words_alpha.txt")
