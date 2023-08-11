@@ -1,3 +1,4 @@
+import logging
 from models.search_database import SearchDatabase
 from providers.provider_injector import inject
 from providers.search_database_provider import SearchDatabaseProvider
@@ -9,6 +10,7 @@ class AutoCompleteController:
     @inject(SearchDatabaseProvider)  # Injects the SearchDatabase service
     def get(search_db: SearchDatabase, request, params: dict):
         query = params.get("query")
+        logging.info("Query made to controller : %s", query)
         matched = search_db.search(query)
         response = AutoCompleteResponse(matched)
         return response

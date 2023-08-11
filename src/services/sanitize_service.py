@@ -3,7 +3,10 @@ import re
 from exceptions.api_validation_exception import APIValidationException
 
 
+
 class SanitizeService:
+    MAX_CHARS = 50
+    
     @staticmethod
     def sanitize_path(url_path: str) -> dict:
         """
@@ -32,4 +35,4 @@ class SanitizeService:
         """
         Sanitize the query sent to the server (allowing only alpha chars)
         """
-        return re.sub(r'(\W|\d)+', '_', query).lower()
+        return re.sub(r'(\W|\d)+', '_', query).lower()[0:SanitizeService.MAX_CHARS]

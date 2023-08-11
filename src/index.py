@@ -1,8 +1,14 @@
+from http.server import HTTPServer
 import os
 import logging
-logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.DEBUG)
 
-from http.server import HTTPServer
+logging.basicConfig(
+    filename="../logs/app.log",
+    format='%(asctime)s - %(levelname)s: %(message)s',
+    level=logging.DEBUG
+)
+
+
 from services.request_handler import RequestHandler
 
 HOSTNAME = os.environ.get("HOSTNAME") \
