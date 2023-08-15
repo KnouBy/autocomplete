@@ -7,7 +7,7 @@
 - Linux
 - make
 
-# Comment utiliser l'application en developpement ?
+# Comment utiliser l'application en développement ?
 ## Avec Docker
 Faire les étapes suivantes : 
 ```
@@ -29,13 +29,14 @@ make test
 Insérez le port sur lequel l'application tourne puis le mot que vous souhaitez compléter.
 
 # Structure de fichiers
-
 data : Contient les fichiers de données d'exemple pour la base de données 
 docker : Contient les fichiers nécessaires à la configuration de Docker
 src : Contient le code source de l'application
 
-# Pour aller plus loin
+# Changer de liste de mots
+La liste utilisée est dans data/word_list.txt. Si vous désirez changer de liste, vous pouvez modifier ce fichier ou bien changer le path de la variable WORD_LIST_FILE dans le fichier search_database_provider.py.
 
+# Pour aller plus loin
 Ce système a été conçu très simplement. La base de données utilise la structure en Trie souvent utilisée pour les recherches rapides.
 
 ## Comment améliorer la pertinence des suggestions faites ?
