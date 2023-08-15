@@ -41,7 +41,7 @@ Ce système a été conçu très simplement. La base de données utilise la stru
 
 ## Comment améliorer la pertinence des suggestions faites ?
 ### Séparation de mots
-Ici pour des raisons de simplicité nous avons indexé les mots séparés par un espace comme 1 seul mot. Nous aurions pu indexer séparément les mots qui contiennent un ou plusieurs espaces comme plusieurs mots.
+Ici pour des raisons de simplicité les mots séparés par un espace sont indexés comme 1 seul mot. On aurait pu indexer séparément les mots qui contiennent un ou plusieurs espaces comme plusieurs mots.
 ### Caractères spéciaux
 Ici la gestion des caractères spéciaux n'a pas été traitée. 
 - On ne simplifie pas les mots accentués en indexant dans la base de données. Cela signifie que si l'utilisateur recherche un mot qui contient un accent, il ne pourra pas le rechercher avec sa version non accentuée ("émission" ne sera pas retourné avec le préfix "em").
