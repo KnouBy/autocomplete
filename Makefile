@@ -21,3 +21,6 @@ test:
 	echo "Réponse:\n";\
 	curl http://localhost:$$PORT/autocomplete?query=$$WORD;\
 	echo "\n"
+
+pytest:
+	cd src && pytest

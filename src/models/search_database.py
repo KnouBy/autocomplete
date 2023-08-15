@@ -31,7 +31,7 @@ class SearchDatabase:
             if not node.children.get(letter):
                 node.children[letter] = SearchNode()
             node = node.children[letter]
-            node.add_word(word)
+            node.add_word(word.lower())
 
     def search(self, word: str) -> str:
         """

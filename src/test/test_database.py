@@ -10,7 +10,7 @@ def test_add_word():
 def test_add_word_with_different_key():
     db = SearchDatabase()
     db.index_word("TOTO", "tata")
-    assert db.search("ta")[0] == "TOTO"
+    assert db.search("ta")[0] == "toto"
 
 
 def test_search_longer_word():
@@ -39,8 +39,17 @@ def test_db_from_txt():
     ]
 
 
-def test_index_large_db():
+def test_index_larger_db():
     db = SearchDatabase().from_txt_file("../data/words_alpha.txt")
     autocomplete_propositions = db.search("parti")
     autocomplete_propositions.sort()
     assert autocomplete_propositions[0] == "parti"
+
+"""
+# TODO to ameliorate the autocomplete service
+def test_accentuated():
+    db = SearchDatabase().from_txt_file("../data/word_accentuated.txt")
+    autocomplete_propositions = db.search("em")
+    autocomplete_propositions.sort()
+    assert autocomplete_propositions == ["émission"]
+"""
