@@ -9,7 +9,8 @@ class SearchDatabase:
 
     def __init__(self):
         """
-        The search database is made of search nodes to accelerate the search time
+        The search database is made of search nodes to accelerate the search time.
+        See https://en.wikipedia.org/wiki/Trie for more information
         """
         self.__root_node = SearchNode()
 
