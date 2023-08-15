@@ -29,9 +29,9 @@ make test
 Insérez le port sur lequel l'application tourne puis le mot que vous souhaitez compléter.
 
 # Structure de fichiers
-data : Contient les fichiers de données d'exemple pour la base de données 
-docker : Contient les fichiers nécessaires à la configuration de Docker
-src : Contient le code source de l'application
+- data : Contient les fichiers de données d'exemple pour la base de données 
+- docker : Contient les fichiers nécessaires à la configuration de Docker
+- src : Contient le code source de l'application
 
 # Changer de liste de mots
 La liste utilisée est dans data/word_list.txt. Si vous désirez changer de liste, vous pouvez modifier ce fichier ou bien changer le path de la variable WORD_LIST_FILE dans le fichier search_database_provider.py.
